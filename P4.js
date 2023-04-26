@@ -53,6 +53,7 @@ function initBoard() {
             }
         }
     }
+    document.getElementById('player-turn').innerHTML = 'Player ' + currentPlayer + ' turn';
 }
 
 // vérifier s'il y a un gagnant
@@ -127,6 +128,7 @@ function handleClick(e) {
     if (winner !== 0) {
         gameOver = true;
         setTimeout(() => {
+            drawBoard();
             alert("Le joueur" + winner + "a gagné!");
             initBoard();
             drawBoard();
