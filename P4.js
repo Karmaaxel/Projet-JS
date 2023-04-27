@@ -7,9 +7,6 @@ const ctx = canvas.getContext('2d');
 // tableau de jeu
 let board = [];
 
-// couleurs des joueurs
-let playerColors = ['#FF4136', '#FFDC00'];
-
 // joueur en cours
 let currentPlayer = 0;
 
@@ -27,10 +24,10 @@ function initBoard() {
     for (let i = 0; i < ROWS; i++) {
       board.push(Array(COLS).fill(0));
     }
-  }
+}
   
-  // dessiner le tableau de jeu
-  function drawBoard() {
+// dessiner le tableau de jeu
+function drawBoard() {
     ctx.fillStyle = '#006699';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
@@ -129,9 +126,8 @@ function handleClick(e) {
         gameOver = true;
         setTimeout(() => {
             drawBoard();
-            alert("Le joueur" + winner + "a gagné!");
-            initBoard();
-            drawBoard();
+            alert("Player " + ((currentPlayer+1)%2) + " win!");
+            init();
             currentPlayer = 0;
             gameOver = false;
         }, 500);
